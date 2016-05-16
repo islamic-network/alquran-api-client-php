@@ -45,7 +45,7 @@ class Client
                     [
                         'User-Agent' => 'AlQuranCloudPhpClient/1.0'
                     ],
-                'base_uri' => $this->baseUrl
+                'base_url' => $this->baseUrl
             ]
         );
     }
@@ -83,7 +83,7 @@ class Client
      */
     public function editions()
     {
-        return $this->connect('edition');
+        return $this->connect($this->baseUrl . 'edition');
     }
 
     /**
@@ -101,7 +101,7 @@ class Client
      */
     public function editionsByType($type)
     {
-        return $this->connect('edition/type/' . $type);
+        return $this->connect($this->baseUrl . 'edition/type/' . $type);
     }
 
     /**
@@ -110,7 +110,7 @@ class Client
      */
     public function editionsByFormat($format)
     {
-        return $this->connect('edition/format/' . $format);
+        return $this->connect($this->baseUrl . 'edition/format/' . $format);
     }
 
     /**
@@ -118,7 +118,7 @@ class Client
      */
     public function languages()
     {
-        return $this->connect('edition/language');
+        return $this->connect($this->baseUrl . 'edition/language');
     }
 
     /**
@@ -126,7 +126,7 @@ class Client
      */
     public function formats()
     {
-        return $this->connect('edition/format');
+        return $this->connect($this->baseUrl . 'edition/format');
     }
 
     /**
@@ -134,7 +134,7 @@ class Client
      */
     public function types()
     {
-        return $this->connect('edition/type');
+        return $this->connect($this->baseUrl . 'edition/type');
     }
     
     /**
@@ -144,9 +144,9 @@ class Client
     public function quran($edition = false)
     {
         if ($edition) {
-            return $this->connect('quran/' . $edition);
+            return $this->connect($this->baseUrl . 'quran/' . $edition);
         }
-        return $this->connect('quran');
+        return $this->connect($this->baseUrl . 'quran');
     }
 
     /**
@@ -157,10 +157,10 @@ class Client
     public function ayah($reference, $edition = false)
     {
         if ($edition) {
-            return $this->connect('ayah/' . $reference . '/' . $edition);
+            return $this->connect($this->baseUrl . 'ayah/' . $reference . '/' . $edition);
         }
 
-        return $this->connect('ayah/' . $reference);
+        return $this->connect($this->baseUrl . 'ayah/' . $reference);
     }
 
     /**
@@ -173,17 +173,17 @@ class Client
     {
         if ($surah) {
             if ($edition) {
-                return $this->connect('search/' . $keyword . '/' . $surah . '/' . $edition);
+                return $this->connect($this->baseUrl . 'search/' . $keyword . '/' . $surah . '/' . $edition);
             }
 
-            return $this->connect('search/' . $keyword . '/' . $surah);
+            return $this->connect($this->baseUrl . 'search/' . $keyword . '/' . $surah);
 
         } else {
             if ($edition) {
-                return $this->connect('search/' . $keyword . '/' . 'all' . '/' . $edition);
+                return $this->connect($this->baseUrl . 'search/' . $keyword . '/' . 'all' . '/' . $edition);
             }
 
-            return $this->connect('search/' . $keyword . '/' . 'all');
+            return $this->connect($this->baseUrl . 'search/' . $keyword . '/' . 'all');
         }
     }
 
@@ -206,10 +206,10 @@ class Client
     public function surah($number, $edition = false)
     {
         if ($edition) {
-            return $this->connect('surah/' . $number . '/' . $edition);
+            return $this->connect($this->baseUrl . 'surah/' . $number . '/' . $edition);
         }
 
-        return $this->connect('surah/' . $number);
+        return $this->connect($this->baseUrl . 'surah/' . $number);
     }
 
     /**
@@ -220,9 +220,9 @@ class Client
     public function juz($number, $edition)
     {
         if ($edition) {
-            return $this->connect('juz/' . $number . '/' . $edition);
+            return $this->connect($this->baseUrl . 'juz/' . $number . '/' . $edition);
         }
 
-        return $this->connect('juz/' . $number);
+        return $this->connect($this->baseUrl . 'juz/' . $number);
     }
 }
