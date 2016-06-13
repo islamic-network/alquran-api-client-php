@@ -55,16 +55,18 @@ class Client
      * @param string $format
      * @return mixed|string
      */
-    private function connect($endpoint, $format = self::FORMAT_ARRAY)
+    private function connect($endpoint, $params = null, $format = self::FORMAT_ARRAY)
     {
+        $params = $params == null ? [] : $params;
         try {
             $apiResponse = $this->client->request('GET',
                 $endpoint,
                 [
-                    'query' => []
+                    'query' => $params
                 ]
             );
             $response = (string) $apiResponse->getBody()->getContents();
+
 
             if ($format == self::FORMAT_ARRAY) {
                 return json_decode($response);
@@ -81,9 +83,26 @@ class Client
     /**
      * @return mixed|string
      */
-    public function editions()
+    public function editions($language = null, $type = null , $format = null)
     {
-        return $this->connect($this->baseUrl . 'edition');
+        if ($language !== null) {
+            $params['language'] = $language;    
+        }
+        
+        if ($type !== null) {
+            $params['type'] = $type;    
+        }
+        
+        if ($format !== null) {
+            $params['format'] = $format;    
+        }
+        
+        
+        if (!empty($params)) {
+            return $this->connect($this->baseUrl . 'edition', $params);
+        } else {
+            return $this->connect($this->baseUrl . 'edition');
+        }
     }
 
     /**
@@ -169,17 +188,17 @@ class Client
      * @param bool|false $edition
      * @return mixed|string
      */
-    public function search($keyword, $surah = false, $edition = false)
+    public function search($keyword, $surah = null, $edition = null)
     {
         if ($surah) {
-            if ($edition) {
+            if ($edition !== null) {
                 return $this->connect($this->baseUrl . 'search/' . $keyword . '/' . $surah . '/' . $edition);
             }
 
             return $this->connect($this->baseUrl . 'search/' . $keyword . '/' . $surah);
 
         } else {
-            if ($edition) {
+            if ($edition !== null) {
                 return $this->connect($this->baseUrl . 'search/' . $keyword . '/' . 'all' . '/' . $edition);
             }
 
@@ -193,7 +212,7 @@ class Client
      * @param bool|false $edition
      * @return mixed|string
      */
-    public function searchSurah($keyword, $surah, $edition = false)
+    public function searchSurah($keyword, $surah, $edition = null)
     {
         return $this->search($keyword, $surah, $edition);
     }
@@ -210,6 +229,16 @@ class Client
         }
 
         return $this->connect($this->baseUrl . 'surah/' . $number);
+    }
+    
+    /**
+     * Returns list of surahs
+     * 
+     * @return mixed|string
+     */
+    public function surahs()
+    {
+        return $this->connect($this->baseUrl . 'surah');
     }
 
     /**
