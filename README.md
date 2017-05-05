@@ -39,7 +39,7 @@ $t->juz(30); // This will return Juz 30 (there are only 30!)
 ```
 
 #### Getting Editions, Searching and more...
-Please see the complete documentation in the docs/index.html.
+Please see the complete documentation in docs/index.html (Clone the repo and open the file in a browser).
 
 ### Authors and Contributors
 Meezaan-ud-Din Abdu Dhil-Jalali Wal-Ikram (@meezaan).
