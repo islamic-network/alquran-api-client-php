@@ -256,3 +256,4 @@ class Client
         return $this->connect($this->baseUrl . 'juz/' . $number);
     }
 }
+
