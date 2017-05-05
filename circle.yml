@@ -1,0 +1,10 @@
+dependencies:
+  pre:
+    - sudo composer self-update
+
+  override:
+    - composer install --prefer-dist --no-interaction
+
+test:
+  override:
+    - vendor/bin/phpunit tests/
