@@ -43,7 +43,8 @@ class Client
             [
                 'headers' =>
                     [
-                        'User-Agent' => 'AlQuranCloudPhpClient/1.0'
+                        'User-Agent' => 'AlQuranCloudPhpClient/1.0',
+                        'Referer' => gethostname(),
                     ],
                 'base_url' => $this->baseUrl
             ]
