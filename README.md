@@ -1,4 +1,6 @@
-[![CircleCI](https://circleci.com/gh/islamic-apps/alquran-api-client-php.svg?style=shield)](https://circleci.com/gh/islamic-apps/alquran-api-client-php)
+## بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
+
+[![CircleCI](https://circleci.com/gh/islamic-network/alquran-api-client-php.svg?style=shield)](https://circleci.com/gh/islamic-apps/alquran-api-client-php)
 
 ### AlQuran Cloud API Client (PHP)
 This is a PHP API client that uses the rest API at alquran.cloud to fetch Quran Ayahs, Surahs Juzs or the entire Quran..
