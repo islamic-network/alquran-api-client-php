@@ -35,9 +35,13 @@ class Client
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct($baseUrl = null)
     {
-        $this->baseUrl = self::BASE_URL_HTTP;
+        if ($baseUrl === null) {
+            $this->baseUrl = self::BASE_URL_HTTP;
+        } else {
+            $this->baseUrl = $baseUrl;
+        }
 
         $this->client = new \GuzzleHttp\Client(
             [
