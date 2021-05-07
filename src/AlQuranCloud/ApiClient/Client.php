@@ -259,4 +259,9 @@ class Client
 
         return $this->connect($this->baseUrl . 'juz/' . $number);
     }
+
+    public function meta()
+    {
+        return $this->connect($this->baseUrl . 'meta');
+    }
 }
