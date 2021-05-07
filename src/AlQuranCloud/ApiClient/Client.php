@@ -30,7 +30,7 @@ class Client
     /**
      * @const string
      */
-    const BASE_URL_HTTP = 'http://api.alquran.cloud/';
+    const BASE_URL_HTTP = 'http://api.alquran.cloud/v1/';
 
     /**
      * Constructor
